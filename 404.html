@@ -776,9 +776,12 @@
       }
     }
 
-    async function discoverLiveTunnelBase() {
+    async function discoverLiveTunnelBase(forceRefresh) {
+      if (forceRefresh) {
+        resolvedTunnelBase = '';
+      }
       if (resolvedTunnelBase) return resolvedTunnelBase;
-      if (resolvingPromise) return resolvingPromise;
+      if (resolvingPromise && !forceRefresh) return resolvingPromise;
       resolvingPromise = (async () => {
         const ts = Date.now();
         const hostOwner = window.location.hostname.split('.')[0] || 'nexusistemas';
@@ -786,18 +789,18 @@
         const firstSeg = pathParts[0] || '';
         const repoGuess = (firstSeg && !['mesa', 'cardapio', 'rastreio', 'pdv', 'index.html', 'mesa.html'].includes(firstSeg.toLowerCase()))
           ? firstSeg
-          : 'sirbeefcardapio';
+          : 'cardapio-teste';
         const candidates = [
+          `https://api.github.com/repos/${hostOwner}/${repoGuess}/contents/tunnel.json?t=${ts}`,
+          `https://api.github.com/repos/${hostOwner}/${hostOwner}.github.io/contents/tunnel.json?t=${ts}`,
           `https://raw.githubusercontent.com/${hostOwner}/${repoGuess}/main/tunnel.json?t=${ts}`,
           `https://raw.githubusercontent.com/${hostOwner}/${hostOwner}.github.io/main/tunnel.json?t=${ts}`,
-          `https://raw.githubusercontent.com/nexusistemas/sirbeefcardapio/main/tunnel.json?t=${ts}`,
+          `https://raw.githubusercontent.com/nexusistemas/cardapio-teste/main/tunnel.json?t=${ts}`,
           `https://raw.githubusercontent.com/nexusistemas/nexusistemas.github.io/main/tunnel.json?t=${ts}`,
           `./tunnel.json?t=${ts}`,
           `../tunnel.json?t=${ts}`,
-          `/sirbeefcardapio/tunnel.json?t=${ts}`,
-          `/tunnel.json?t=${ts}`,
-          `https://api.github.com/repos/${hostOwner}/${repoGuess}/contents/tunnel.json?t=${ts}`,
-          `https://api.github.com/repos/${hostOwner}/${hostOwner}.github.io/contents/tunnel.json?t=${ts}`
+          `/cardapio-teste/tunnel.json?t=${ts}`,
+          `/tunnel.json?t=${ts}`
         ];
         const testedBases = new Set();
         for (const u of candidates) {
@@ -834,17 +837,27 @@
       return out;
     }
 
-    discoverLiveTunnelBase();
-    setInterval(() => { resolvedTunnelBase = ''; discoverLiveTunnelBase(); }, 25000);
+    discoverLiveTunnelBase(false);
+    setInterval(() => { discoverLiveTunnelBase(true); }, 20000);
 
     window.fetch = async function(input, init) {
       let urlStr = typeof input === 'string' ? input : (input && input.url ? input.url : '');
       if (urlStr.startsWith('/api/') || urlStr.startsWith('api/')) {
-        const base = resolvedTunnelBase || (await discoverLiveTunnelBase());
+        const cleanPath = urlStr.startsWith('/') ? urlStr : ('/' + urlStr);
+        let base = resolvedTunnelBase || (await discoverLiveTunnelBase(false));
         if (base) {
-          const cleanPath = urlStr.startsWith('/') ? urlStr : ('/' + urlStr);
+          try {
+            const r1 = await origFetch(base + cleanPath, init);
+            if (r1 && r1.status !== 405 && r1.status < 502) {
+              return r1;
+            }
+          } catch (_) {}
+        }
+        base = await discoverLiveTunnelBase(true);
+        if (base) {
           return origFetch(base + cleanPath, init);
         }
+        throw new Error('TUNNEL_OFFLINE');
       }
       return origFetch(input, init);
     };
@@ -1280,12 +1293,12 @@
     const firstSeg = pathParts[0] || '';
     const repoGuess = (firstSeg && !['mesa', 'cardapio', 'rastreio', 'pdv', 'index.html', 'mesa.html'].includes(firstSeg.toLowerCase()))
       ? firstSeg
-      : 'sirbeefcardapio';
+      : 'cardapio-teste';
     const candidates = [
       `./menu-data.json?t=${ts}`,
       `../menu-data.json?t=${ts}`,
       `https://raw.githubusercontent.com/${hostOwner}/${repoGuess}/main/menu-data.json?t=${ts}`,
-      `https://raw.githubusercontent.com/nexusistemas/sirbeefcardapio/main/menu-data.json?t=${ts}`
+      `https://raw.githubusercontent.com/nexusistemas/cardapio-teste/main/menu-data.json?t=${ts}`
     ];
     for (const u of candidates) {
       try {
