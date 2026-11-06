@@ -789,17 +789,17 @@
         const firstSeg = pathParts[0] || '';
         const repoGuess = (firstSeg && !['mesa', 'cardapio', 'rastreio', 'pdv', 'index.html', 'mesa.html'].includes(firstSeg.toLowerCase()))
           ? firstSeg
-          : 'sirbeefcardapio';
+          : 'cardapio-teste';
         const candidates = [
           `https://api.github.com/repos/${hostOwner}/${repoGuess}/contents/tunnel.json?t=${ts}`,
           `https://api.github.com/repos/${hostOwner}/${hostOwner}.github.io/contents/tunnel.json?t=${ts}`,
           `https://raw.githubusercontent.com/${hostOwner}/${repoGuess}/main/tunnel.json?t=${ts}`,
           `https://raw.githubusercontent.com/${hostOwner}/${hostOwner}.github.io/main/tunnel.json?t=${ts}`,
-          `https://raw.githubusercontent.com/nexusistemas/sirbeefcardapio/main/tunnel.json?t=${ts}`,
+          `https://raw.githubusercontent.com/nexusistemas/cardapio-teste/main/tunnel.json?t=${ts}`,
           `https://raw.githubusercontent.com/nexusistemas/nexusistemas.github.io/main/tunnel.json?t=${ts}`,
           `./tunnel.json?t=${ts}`,
           `../tunnel.json?t=${ts}`,
-          `/sirbeefcardapio/tunnel.json?t=${ts}`,
+          `/cardapio-teste/tunnel.json?t=${ts}`,
           `/tunnel.json?t=${ts}`
         ];
         const testedBases = new Set();
@@ -1293,12 +1293,12 @@
     const firstSeg = pathParts[0] || '';
     const repoGuess = (firstSeg && !['mesa', 'cardapio', 'rastreio', 'pdv', 'index.html', 'mesa.html'].includes(firstSeg.toLowerCase()))
       ? firstSeg
-      : 'sirbeefcardapio';
+      : 'cardapio-teste';
     const candidates = [
       `./menu-data.json?t=${ts}`,
       `../menu-data.json?t=${ts}`,
       `https://raw.githubusercontent.com/${hostOwner}/${repoGuess}/main/menu-data.json?t=${ts}`,
-      `https://raw.githubusercontent.com/nexusistemas/sirbeefcardapio/main/menu-data.json?t=${ts}`
+      `https://raw.githubusercontent.com/nexusistemas/cardapio-teste/main/menu-data.json?t=${ts}`
     ];
     for (const u of candidates) {
       try {
