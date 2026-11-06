@@ -254,11 +254,11 @@
         "is_kiosk": false,
         "is_custom": false,
         "active": true,
-        "status": "LIVRE",
+        "status": "OCUPADA",
         "waiter_call": false,
         "qr_token": "NEXUSTEST-MESA-16",
-        "current_total": 0,
-        "updated_at": "20:13"
+        "current_total": 21.3,
+        "updated_at": "20:33"
       },
       {
         "id": 17,
@@ -471,7 +471,7 @@
         "updated_at": "20:13"
       }
     ],
-    "updated_at": "2026-11-06T20:29:45-03:00"
+    "updated_at": "2026-11-06T20:33:51-03:00"
   },
   "catalog": [
     {
@@ -500,7 +500,8 @@
           "sector_abc": "HAMBURGUERIA",
           "name": "FRAUDINHA",
           "description": "",
-          "price": 25,
+          "price": 21.3,
+          "promo_from": 25,
           "cost_price": 16.5,
           "ean13": "",
           "is_weighted": false,
@@ -752,11 +753,11 @@
       "is_kiosk": false,
       "is_custom": false,
       "active": true,
-      "status": "LIVRE",
+      "status": "OCUPADA",
       "waiter_call": false,
       "qr_token": "NEXUSTEST-MESA-16",
-      "current_total": 0,
-      "updated_at": "20:13"
+      "current_total": 21.3,
+      "updated_at": "20:33"
     },
     {
       "id": 17,
